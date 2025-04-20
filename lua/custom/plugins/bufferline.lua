@@ -3,10 +3,16 @@ return {
   version = '*',
   dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()
+    --keymaps
+    vim.keymap.set('n', '<leader>bl', ':BufferLinePick<CR>')
+    vim.keymap.set('n', '<leader>x', ':BufferLinePickClose<CR>')
     require('bufferline').setup {
       options = {
         themable = true,
         diagnostics = 'nvim_lsp',
+        indicator = {
+          style = 'underline',
+        },
         offsets = {
           {
             filetype = 'neo-tree',
@@ -16,8 +22,7 @@ return {
           },
         },
         separator_style = 'slope',
-
-        color_icons = false, -- whether or not to add the filetype icon highlights
+        color_icons = true, -- whether or not to add the filetype icon highlight
       },
     }
   end,
